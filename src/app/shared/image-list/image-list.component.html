@@ -1,0 +1,18 @@
+<div class="container" style="margin-top: 5vh;">
+    <div class="row" *ngIf="imageData">
+        <div class="card col-sm-3"
+            *ngFor="let image of imageData | paginate: { itemsPerPage: itemsPerPage, currentPage: page }">
+            <img class="card-img-top" [src]="image.url" alt="image">
+            <div class="card-body">
+                <h5 class="card-title">{{image.id}}</h5>
+                <p class="card-text cls-text-overflow">{{image.title}}</p>
+                <button class="btn btn-primary" (click)="compareImg(image)">{{image.compare ? 'Remove' : 'Compare'}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="row cls-pagination">
+        <div class="has-text-centered">
+            <pagination-controls (pageChange)="page = $event"></pagination-controls>
+        </div>
+    </div>
+</div>
